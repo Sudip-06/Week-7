@@ -16,7 +16,8 @@ description: "Maintainable product docs in Markdown, exported to HTML/PDF/PPTX v
 :root {
   --accent: #2563eb;
   --text: #0f172a;
-}
+}<img width="117" height="154" alt="image" src="https://github.com/user-attachments/assets/6113da87-48a0-4588-b95b-37d47d1702c1" />
+
 section {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   color: var(--text);
