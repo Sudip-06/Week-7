@@ -1,151 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quarterly Earnings — RevealJS</title>
 
-  <!-- Reveal core + theme -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css" id="theme" />
-  <!-- Code highlight theme -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/monokai.css" />
+  <!-- RevealJS core + theme + highlight -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/monokai.css">
 
   <style>
-    :root { --r-main-font-size: calc(0.7vw + 0.7vh + 0.6vmin); }
-    .kpi { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-    .card { padding:16px; border:1px solid #eee; border-radius:14px; box-shadow:0 6px 20px rgba(0,0,0,.06); }
-    .value { font-size:2em; font-weight:700; }
-    .muted { color:#666; }
-    .fit-code pre code { max-height:60vh; }
+    .footer { position: fixed; left: 16px; bottom: 10px; opacity:.8; font-size:16px; }
   </style>
 </head>
 <body>
   <div class="reveal">
     <div class="slides">
-
-      <!-- Title (includes email visibly) -->
+      <!-- Title slide (email visible) -->
       <section>
-        <h1>Quarterly Earnings Report</h1>
-        <h2>23f3004246@ds.study.iitm.ac.in</h2>
-        <p>Prepared by Technical Consultant</p>
-        <p>
-          Contact: 23f3004246@ds.study.iitm.ac.in
-          &nbsp;|&nbsp;
-          <a href="mailto:23f3004246@ds.study.iitm.ac.in">Send Email</a>
-        </p>
-        <aside class="notes">
-          Welcome! This deck demonstrates Markdown slides, fragments, code highlighting, math, and speaker notes.
-        </aside>
+        <h2>Quarterly Earnings Report</h2>
+        <p><strong>Contact:</strong> <span>23f3004246@ds.study.iitm.ac.in</span></p>
+        <aside class="notes">Welcome stakeholders. Use arrows to navigate.</aside>
       </section>
 
       <!-- Markdown slide -->
-      <section data-markdown data-separator="^---$" data-separator-vertical="^--$" data-separator-notes="^Note:">
+      <section data-markdown>
         <textarea data-template>
-## Agenda (Markdown)
+## KPI Highlights (Markdown)
 
-- Results Overview
-- Revenue & Margin Trends
-- Outlook & Guidance
-- Q&A
+- Revenue growth **+7%** <!-- .element: class="fragment" -->
+- Operating margin **+90 bps** <!-- .element: class="fragment" -->
+- EPS **+11%** y/y <!-- .element: class="fragment" -->
 
----
-
-## Highlights (Markdown)
-
-- **Double-digit** YoY revenue growth
-- Margin expansion
-- Strong free cash flow conversion
-
-Note: Emphasize growth drivers and risk mitigations.
+**Email:** 23f3004246@ds.study.iitm.ac.in
         </textarea>
       </section>
 
-      <!-- Animated fragments -->
+      <!-- Code with syntax highlighting -->
       <section>
-        <h2>Key Metrics</h2>
-        <div class="kpi">
-          <div class="card fragment fade-up">
-            <div class="muted">Revenue (YoY)</div>
-            <div class="value">+12.4%</div>
-            <div class="muted">Beats guidance</div>
-          </div>
-          <div class="card fragment fade-up">
-            <div class="muted">Operating Margin</div>
-            <div class="value">18.2%</div>
-            <div class="muted">+90 bps QoQ</div>
-          </div>
-          <div class="card fragment fade-up">
-            <div class="muted">FCF Conversion</div>
-            <div class="value">104%</div>
-            <div class="muted">Robust cash discipline</div>
-          </div>
-        </div>
-        <aside class="notes">Reveal each KPI to focus attention.</aside>
-      </section>
-
-      <!-- Code sample with syntax highlighting + line numbers -->
-      <section class="fit-code">
-        <h2>Analysis Snippet (Python)</h2>
-        <pre><code class="language-python" data-line-numbers="1-4|6-11|13-16">
+        <h3>Code Sample</h3>
+        <pre><code class="language-python" data-line-numbers="1-3|5-8">
 import pandas as pd
+df = pd.DataFrame({"Q":["Q1","Q2","Q3","Q4"], "eff":[71.5,71.53,74.1,75.52]})
+target = 90
 
-# YoY growth helper
-def yoy_growth(curr, prev):
-    return (curr / prev) - 1.0
-
-# Example series
-revenue = pd.Series({"Q2_FY24": 1042.0, "Q2_FY25": 1171.0})
-yoy = yoy_growth(revenue["Q2_FY25"], revenue["Q2_FY24"]) * 100
-
-print(f"YoY Revenue Growth: {yoy:.2f}%")
+gap = target - df["eff"].mean()
+print(f"Avg={df['eff'].mean():.2f}, Gap={gap:.2f}")
         </code></pre>
-        <aside class="notes">Walk through helper, compute YoY, then print result.</aside>
+        <aside class="notes">Point out average vs target and link to ops plan.</aside>
       </section>
 
-      <!-- Financial math (KaTeX) -->
+      <!-- Math slide -->
       <section>
-        <h2>Financial Formulas</h2>
-        <p>CAGR:</p>
-        <p>\[ \text{CAGR} = \left(\frac{V_{\text{final}}}{V_{\text{initial}}}\right)^{\tfrac{1}{n}} - 1 \]</p>
-        <p>Terminal Value (Gordon):</p>
-        <p>\[ \text{TV} = \frac{\text{FCF}_{n+1}}{(r - g)} \]</p>
-        <aside class="notes">Use sensitivity to discuss discount rate and growth.</aside>
+        <h3>Financial Formula (MathJax)</h3>
+        <p>\[\text{NPV}=\sum_{t=0}^{T}\frac{CF_t}{(1+r)^t}\]</p>
+        <aside class="notes">Explain discount rate sensitivity.</aside>
       </section>
 
-      <!-- Speaker notes example + second visible email mention -->
+      <!-- Fragments -->
       <section>
-        <h2>Q&A / Contact</h2>
-        <p>For follow-ups, email: 23f3004246@ds.study.iitm.ac.in</p>
-        <p class="muted">Shortcuts: <strong>S</strong> notes, <strong>O</strong> overview, <strong>?</strong> help</p>
-        <aside class="notes">Invite questions and provide contact details.</aside>
+        <h3>Next Steps</h3>
+        <ul>
+          <li class="fragment">Implement predictive maintenance program</li>
+          <li class="fragment">Automate monthly KPI dashboard</li>
+        </ul>
       </section>
-
     </div>
   </div>
 
-  <!-- Reveal core + plugins -->
+  <!-- Footer (email visible on every slide) -->
+  <div class="footer">23f3004246@ds.study.iitm.ac.in</div>
+
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
   <script>
     Reveal.initialize({
       hash: true,
-      width: 1280,
-      height: 720,
-      margin: 0.06,
-      controls: true,
-      progress: true,
-      history: true,
-      transition: 'slide',
-      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ],
-      math: {
-        katex: 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js',
-        katexConfig: { throwOnError: false }
-      }
+      plugins: [ RevealMarkdown, RevealHighlight, RevealMath, RevealNotes ]
     });
   </script>
 </body>
