@@ -1,33 +1,61 @@
 ---
 marp: true
 title: Product Documentation — Marp Demo
-author: Technical Writer (sudip-06)
-theme: default           # Using default plus local CSS below
+author: Sudip Dey
+theme: gaia
 paginate: true
-footer: "© 2025 • Contact: 23f3004246@ds.study.iitm.ac.in"
-description: "Maintainable product docs in Markdown, exportable to HTML/PDF/PPTX via Marp."
 ---
 
-<!--
-Custom theme specification (save as themes/product-docs.css to use with --theme)
-```css
-/* @theme product-docs
- * Usage:
- *   marp --theme themes/product-docs.css slides.md -o dist/index.html
- */
-:root {
-  --accent: #2563eb;   /* Indigo */
-  --text: #0f172a;     /* Slate-900 */
-}
-section {
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  color: var(--text);
-  padding: 60px;
-}
-h1, h2, h3 { color: var(--accent); letter-spacing: .3px; }
-blockquote { color: #334155; }
-section::after {
-  /* Explicit page number overlay (alternative to paginate: true) */
-  content: attr(data-marpit-pagination) " / " attr(data-marpit-pagination-total);
-  position: absolute; right: 24px; bottom: 18px; font-size: .8rem; color: #64748b;
-}
+<!-- _header: Product Docs | v1.0 -->
+<!-- _footer: 23f3004246@ds.study.iitm.ac.in -->
+
+# Product Documentation
+
+**Contact:** 23f3004246@ds.study.iitm.ac.in  
+This deck demonstrates Marp features for maintainable, version-controlled documentation.
+
+---
+
+![bg cover](images/diagram.png)
+
+# System Overview
+
+- Services, APIs, and data flows
+- Deployment regions and SLAs
+- AuthN/AuthZ boundaries
+
+---
+
+<!-- _class: lead -->
+
+# Performance & Complexity
+
+Inline: $O(n \log n)$
+
+$$
+T(n) = a\,n\log n + b\,n + c
+$$
+
+Notes:
+- Use amortized analysis for queue-heavy paths
+- Profile I/O wait vs CPU-bound stages
+
+---
+
+<!-- _color: #005f99 -->
+
+## Styling via Directives
+
+- Custom slide colors via `_color`
+- Header/footer with email for verification
+- Page numbers enabled via `paginate: true`
+
+---
+
+## Code Sample
+
+```python
+def service_latency(p50, p95):
+    return {"p50_ms": p50, "p95_ms": p95}
+
+print(service_latency(120, 380))
